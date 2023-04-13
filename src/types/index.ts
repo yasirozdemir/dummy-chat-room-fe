@@ -1,10 +1,10 @@
 export type User = {
-  username: string
-  socketId: string
-}
+  username: string;
+  socketID: string;
+};
 
 export type Message = {
-  sender: string
-  text: string
-  createdAt: string
-}
+  sender: string;
+  text: string;
+  createdAt: string;
+};
