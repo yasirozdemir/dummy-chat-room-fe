@@ -51,7 +51,11 @@ const Home = () => {
 
       socket.on("newMessage", newMessage => {
         console.log(newMessage)
-        setChatHistory([...chatHistory, newMessage.message])
+        // setChatHistory([...chatHistory, newMessage.message])
+        // if we set the state just by passing a value, the new message will be appended to the INITIAL state of the component (empty chat history [])
+        // since we don't want that, we should use the set state function by passing a callback function instead
+        // this is going to give us the possibility to access to the CURRENT state of the component (chat history filled with some messages)
+        setChatHistory((chatHistory) => [...chatHistory, newMessage.message])
       })
     })
   }, [])
