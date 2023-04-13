@@ -80,7 +80,14 @@ const Home = () => {
           )}
           <ListGroup>
             {chatHistory.map((message, index) => (
-              <ListGroup.Item key={index}>
+              <ListGroup.Item
+                key={index}
+                style={
+                  username === message.sender
+                    ? { backgroundColor: "#bec5d1" }
+                    : {}
+                }
+              >
                 <div>
                   <strong className="mr-1">{message.sender}</strong>
                   {message.text}
