@@ -6,5 +6,5 @@ export type User = {
 export type Message = {
   sender: string;
   text: string;
-  createdAt: Date;
+  createdAt: string;
 };

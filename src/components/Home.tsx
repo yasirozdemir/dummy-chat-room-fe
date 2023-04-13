@@ -9,7 +9,6 @@ import {
 } from "react-bootstrap";
 import { io } from "socket.io-client";
 import { User, Message } from "../types";
-import format from "date-fns/format";
 
 const socket = io("http://localhost:3001", { transports: ["websocket"] });
 // if we don't specifiy the transports option, it will try to poll by default.
@@ -52,7 +51,7 @@ const Home = () => {
     const newMessage = {
       sender: username,
       text: message,
-      createdAt: new Date(),
+      createdAt: new Date().toLocaleString("en-US"),
     };
     socket.emit("sendMessage", { message: newMessage });
     setChatHistory([...chatHistory, newMessage]);
@@ -84,11 +83,9 @@ const Home = () => {
               <ListGroup.Item key={index}>
                 <div>
                   <strong className="mr-1">{message.sender}</strong>
-                  <span>{message.text}</span>
+                  {message.text}
                 </div>
-                <small className="text-info">
-                  {format(message.createdAt, "E 'at' hh:mm a")}
-                </small>
+                <small className="text-info">{message.createdAt}</small>
               </ListGroup.Item>
             ))}
           </ListGroup>
