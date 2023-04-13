@@ -51,7 +51,7 @@ const Home = () => {
     const newMessage = {
       sender: username,
       text: message,
-      createdAt: new Date().toLocaleString("en-US"),
+      createdAt: new Date().toLocaleString("en-GB"),
     };
     socket.emit("sendMessage", { message: newMessage });
     setChatHistory([...chatHistory, newMessage]);
