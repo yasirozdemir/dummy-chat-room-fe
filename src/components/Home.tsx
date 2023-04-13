@@ -14,7 +14,7 @@ import { User, Message } from '../types'
 // 2. If the connection is correctly established, the server will emit to us an event called 'welcome' containing a message with the id of the connection
 // 3. If we want to do something when the event happens we shall LISTEN to that event by using socket.on("welcome", () => {})
 // 4. Once we are connected we would like to submit the username to the server --> we are going to EMIT an event called "setUsername", containing the username itself as payload
-// 5. Server is listening for "setUsername" event, WHEN it receives that event it will BROADCAST that username to all the other clients who are listening for an event called "loggedIn"
+// 5. Server is listening for "setUsername" event, WHEN it receives that event it will send a "loggedIn" event to this client, and broadcast to all the other users another event with the updated list of users
 // 6. The list of online users is updated only during "login", but what happens if a new user joins after the "login"? In this case we are not updating the list
 // 7. When a new user joins server emits an event called "updateOnlineUsersList", this is supposed to update that list when a user joins or leaves
 // 8. When the client wants to send a message, it needs to EMIT an event called "sendMessage", as payload it should contain: sender, text, date
